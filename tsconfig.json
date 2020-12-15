@@ -22,6 +22,8 @@
       "@services/*": ["services/*"],
       "@entities": ["entities"],
       "@entities/*": ["entities/*"],
+      "@dtos": ["dtos"],
+      "@dtos/*": ["dtos/*"],
     }
   }
 }
