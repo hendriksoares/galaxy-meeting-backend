@@ -9,7 +9,19 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true
+    "baseUrl": "src",
+    "incremental": true,
+    "paths": {
+      "@configs": ["configs"],
+      "@configs/*": ["configs/*"],
+      "@migrations": ["migrations"],
+      "@migrations/*": ["migrations/*"],
+      "@controllers": ["controllers"],
+      "@controllers/*": ["controllers/*"],
+      "@services": ["services"],
+      "@services/*": ["services/*"],
+      "@entities": ["entities"],
+      "@entities/*": ["entities/*"],
+    }
   }
 }
