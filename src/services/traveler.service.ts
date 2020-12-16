@@ -29,6 +29,8 @@ export class TravelerService {
   }
 
   async createOne(travelerCreate: TravelerCreateDto): Promise<Traveler> {
+    // TODO add default planet when create a traveler
+
     /** create a user */
     const hash = await bcrypt.hash(travelerCreate.password, 10);
     const user = this.userRepository.create({ hash });
@@ -40,5 +42,10 @@ export class TravelerService {
     travaler.userId = userCreated.id;
 
     return this.travelerRepository.save(travaler);
+  }
+
+  async updatePlanet(traveler: Traveler, planetId: string) {
+    traveler.planetId = planetId;
+    return this.travelerRepository.save(traveler);
   }
 }

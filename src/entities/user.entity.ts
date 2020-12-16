@@ -12,7 +12,7 @@ export class User {
   @Column({ name: 'IS_ACTIVE', default: false })
   isActive: boolean;
 
-  /** user system has a voyager */
+  /** user system has a traveler */
   @OneToOne(() => User, (user) => user.traveler)
   traveler: Traveler;
 }
