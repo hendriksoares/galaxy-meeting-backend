@@ -14,9 +14,11 @@ export class AuthController {
 
   @Post()
   @HttpCode(200)
-  signIn(@Body() { email, password }: AuthRequest): Promise<AuthResponse> {
+  signIn(
+    @Body() { email, password, keepLogged }: AuthRequest,
+  ): Promise<AuthResponse> {
     try {
-      return this.authService.singIn(email, password);
+      return this.authService.singIn(email, password, keepLogged);
     } catch (err) {
       switch (err.code) {
         case 'INVALID_PASSWORD_OR_EMAIL':

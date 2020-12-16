@@ -24,6 +24,8 @@
       "@entities/*": ["entities/*"],
       "@dtos": ["dtos"],
       "@dtos/*": ["dtos/*"],
+      "@strategies": ["strategies"],
+      "@strategies/*": ["strategies/*"],
     }
   }
 }

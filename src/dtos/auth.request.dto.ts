@@ -7,4 +7,6 @@ export class AuthRequest {
 
   @IsNotEmpty()
   password: string;
+
+  keepLogged: boolean;
 }

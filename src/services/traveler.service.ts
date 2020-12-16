@@ -21,6 +21,13 @@ export class TravelerService {
     });
   }
 
+  async findOneById(id: string, user = false): Promise<Traveler> {
+    return this.travelerRepository.findOne({
+      where: { id },
+      relations: user ? ['user'] : undefined,
+    });
+  }
+
   async createOne(travelerCreate: TravelerCreateDto): Promise<Traveler> {
     /** create a user */
     const hash = await bcrypt.hash(travelerCreate.password, 10);
