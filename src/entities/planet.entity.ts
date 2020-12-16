@@ -14,7 +14,7 @@ export class Planet {
   @PrimaryGeneratedColumn('uuid', { name: 'ID' })
   id: string;
 
-  @Column({ name: 'NICKNAME' })
+  @Column({ name: 'NAME' })
   name: string;
 
   @Column({ name: 'GALAXY_ID ' })
