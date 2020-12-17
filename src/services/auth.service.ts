@@ -17,6 +17,7 @@ export class AuthService {
     keepLogged = false,
   ): Promise<AuthResponse> {
     const traveler = await this.travelerService.findOneByEmail(email, true);
+
     if (!traveler) {
       throw { code: 'INVALID_PASSWORD_OR_EMAIL' };
     }

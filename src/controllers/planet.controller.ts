@@ -6,10 +6,12 @@ import {
   Controller,
   HttpCode,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { PlanetService } from '@services';
 import { PlanetMeetingDto } from '@dtos';
 import { Current } from 'decorators';
+import { JwtGuard } from 'guards';
 
 @Controller('planet')
 export class PlanetController {
@@ -17,6 +19,7 @@ export class PlanetController {
   /**
    * A endpoint to join in webconference planet
    */
+  @UseGuards(JwtGuard)
   @Post('meeting/join')
   @HttpCode(200)
   async meetingJoin(

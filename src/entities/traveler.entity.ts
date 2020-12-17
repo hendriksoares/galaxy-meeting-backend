@@ -21,8 +21,8 @@ export class Traveler {
   avatar: string;
   @Column({ name: 'USER_ID ' })
   userId: string;
-  @Column({ name: 'PLANET_ID ' })
-  planetId: string;
+  @Column({ name: 'PLANET_ID ', nullable: true })
+  planetId?: string;
 
   /** traveler has a user system */
   @OneToOne(() => User, (user) => user.traveler)

@@ -20,6 +20,9 @@ export class Planet {
   @Column({ name: 'GALAXY_ID ' })
   galaxyId: string;
 
+  @Column({ name: 'CONFERENCE_LINK' })
+  conferenceLink: string;
+
   /** a planet has many travelers */
   @OneToMany(() => Traveler, (traveler) => traveler.planet)
   travelers: Traveler[];

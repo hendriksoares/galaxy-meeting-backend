@@ -1,4 +1,3 @@
-import { Traveler } from '@entities';
 import {
   BadGatewayException,
   BadRequestException,
@@ -6,19 +5,26 @@ import {
   Controller,
   Post,
 } from '@nestjs/common';
-import { TravelerService } from '@services';
-import { TravelerCreateDto } from '@dtos';
+import { AuthService, TravelerService } from '@services';
+import { AuthResponse, TravelerCreateDto } from '@dtos';
 
 @Controller('traveler')
 export class TravelerController {
-  constructor(private readonly travelerService: TravelerService) {}
+  constructor(
+    private readonly travelerService: TravelerService,
+    private readonly authService: AuthService,
+  ) {}
 
   @Post('create')
   async createOne(
     @Body() travelerCreate: TravelerCreateDto,
-  ): Promise<Traveler> {
+  ): Promise<AuthResponse> {
     try {
-      return await this.travelerService.createOne(travelerCreate);
+      await this.travelerService.createOne(travelerCreate);
+      return this.authService.singIn(
+        travelerCreate.email,
+        travelerCreate.password,
+      );
     } catch (err) {
       switch (err.code) {
         case '23505': // postgres code to duplicate entrie
